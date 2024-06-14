@@ -1,4 +1,4 @@
-# Express Error Handlers
+# Express Async Protector
 
 An npm package providing custom error handling and asynchronous middleware wrapping for Express applications.
 
