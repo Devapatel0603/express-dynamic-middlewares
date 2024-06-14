@@ -1,0 +1,18 @@
+{
+  "name": "express-error-handlers",
+  "version": "1.0.0",
+  "description": "An npm package providing custom error handling and asynchronous middleware wrapping for Express applications.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Dev Patel",
+  "license": "MIT",
+  "keywords": [
+    "express",
+    "error handling",
+    "middleware"
+  ]
+}
