@@ -1,4 +1,4 @@
-# Express Error Handlers
+# Express Async Protector
 
 An npm package providing custom error handling and asynchronous middleware wrapping for Express applications.
 
@@ -7,13 +7,13 @@ An npm package providing custom error handling and asynchronous middleware wrapp
 Install my-project with npm
 
 ```bash
-npm install express-error-handlers
+npm install express-async-protector
 ```
 
 or
 
 ```bash
-yarn add express-error-handlers
+yarn add express-async-protector
 ```
 
 ## Usage/Examples
@@ -54,7 +54,7 @@ const {
     ErrorHandler,
     errorHandler,
     asyncHandler,
-} = require("express-error-handlers");
+} = require("express-async-protector");
 
 const app = express();
 
@@ -81,7 +81,7 @@ To handle specific error types, you can customize one array. This array should c
 
 ```javascript
 const express = require('express');
-const { ErrorHandler, errorHandler, asyncHandler } = require('express-error-handlers');
+const { ErrorHandler, errorHandler, asyncHandler } = require('express-async-protector');
 
 const app = express();
 
@@ -118,7 +118,7 @@ app.listen(3000, () => {
 
 ## License
 
-[MIT](https://github.com/Devapatel0603/express-error-handlers/blob/main/LICENCE)
+[MIT](https://github.com/Devapatel0603/express-async-protector/blob/main/LICENCE)
 
 ## Authors
 
