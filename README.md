@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Express Async Protector
-=======
 # Express Error Handlers
->>>>>>> 7565bf24e21084db0941731eae6ec32fd64c4d33
 
 An npm package providing custom error handling and asynchronous middleware wrapping for Express applications.
 
@@ -11,21 +7,13 @@ An npm package providing custom error handling and asynchronous middleware wrapp
 Install my-project with npm
 
 ```bash
-<<<<<<< HEAD
 npm install express-async-protector
-=======
-npm install express-error-handlers
->>>>>>> 7565bf24e21084db0941731eae6ec32fd64c4d33
 ```
 
 or
 
 ```bash
-<<<<<<< HEAD
 yarn add express-async-protector
-=======
-yarn add express-error-handlers
->>>>>>> 7565bf24e21084db0941731eae6ec32fd64c4d33
 ```
 
 ## Usage/Examples
@@ -66,11 +54,7 @@ const {
     ErrorHandler,
     errorHandler,
     asyncHandler,
-<<<<<<< HEAD
 } = require("express-async-protector");
-=======
-} = require("express-error-handlers");
->>>>>>> 7565bf24e21084db0941731eae6ec32fd64c4d33
 
 const app = express();
 
@@ -97,11 +81,7 @@ To handle specific error types, you can customize one array. This array should c
 
 ```javascript
 const express = require('express');
-<<<<<<< HEAD
 const { ErrorHandler, errorHandler, asyncHandler } = require('express-async-protector');
-=======
-const { ErrorHandler, errorHandler, asyncHandler } = require('express-error-handlers');
->>>>>>> 7565bf24e21084db0941731eae6ec32fd64c4d33
 
 const app = express();
 
@@ -138,11 +118,7 @@ app.listen(3000, () => {
 
 ## License
 
-<<<<<<< HEAD
 [MIT](https://github.com/Devapatel0603/express-async-protector/blob/main/LICENCE)
-=======
-[MIT](https://github.com/Devapatel0603/express-error-handlers/blob/main/LICENCE)
->>>>>>> 7565bf24e21084db0941731eae6ec32fd64c4d33
 
 ## Authors
 
