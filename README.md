@@ -155,7 +155,7 @@ app.listen(3000, () => {
 
 ## License
 
-[MIT](https://github.com/Devapatel0603/express-error-handlers/blob/main/LICENCE)
+[MIT](https://github.com/Devapatel0603/express-async-validator/blob/main/LICENCE)
 
 ## Authors
 
