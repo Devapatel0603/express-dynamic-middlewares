@@ -46,25 +46,39 @@ It takes two arguments one is function and second is Array to handle specific er
 app.get("/get", asyncHandler(getFunction));
 ```
 
+Optional Error Handling Array: Customize error handling by providing an optional array as the second argument to `asyncHandler`. This array lets you define specific error types and their corresponding HTTP status codes and messages.
+
+```javascript
+const errorOptions = [
+    {
+        type: TypeError,
+        statusCode: 400,
+        message: "Bad request due to type error",
+    },
+];
+
+app.get("/data", asyncHandler(getData, errorOptions)); // getData is your asynchronous function
+```
+
 **_validator Middleware_**\
 The `validator` function creates a middleware for validating parameters in request body.
 
 ```javascript
-app.get(
-    "/get",
+app.post(
+    "/register",
     validator(
-        "name" /*(Field name)*/,
-        true /*(check for empty or exist)*/,
-        true /*(is email)*/,
-        5 /*(minlength)*/,
-        10 /*(max length)*/,
-        true /*(is phone no)*/
+        "username",
+        true, // (true means check for emptiness or existence)
+        false, // (false means don't check for whether it's an email or not)
+        5, // Minimum length
+        20, // Maximum length
+        false // (false means don't check for whether it's an phone no. or not)
     ),
-    asyncHandler(getFunction)
+    asyncHandler(registerUser) // registerUser is your asynchronous function for handling registration
 );
 ```
 
-Other validating middlewares : `validateString`,`validateNumber`,`validateBoolean`
+Additional Validation Middlewares: For your convenience, `express-async-validato`r offers pre-built validation middlewares like `validateString`, `validateNumber`, and `validateBoolean`.
 
 ```javascript
 app.get(
@@ -84,13 +98,13 @@ const {
     errorHandler,
     asyncHandler,
     validator,
-} = require("express-error-handlers");
+} = require("express-async-validator");
 
 const app = express();
 
 //All routes
-app.get(
-    "/data",
+app.post(
+    "/register",
     validator(
         "email",
         true,
@@ -101,7 +115,13 @@ app.get(
     ),
     asyncHandler(async (req, res) => {
         //Throw error
-        throw new ErrorHandler(404, "User not found");
+        if (username === "admin@gmail.com") {
+            throw new ErrorHandler(
+                403,
+                "This email is not allowed for registration."
+            );
+        }
+        res.json({ success: true, message: "User registered successfully!" });
     })
 );
 
@@ -118,7 +138,7 @@ To handle specific error types, you can customize one array. This array should c
 
 ```javascript
 const express = require('express');
-const { ErrorHandler, errorHandler, asyncHandler } = require('express-error-handlers');
+const { ErrorHandler, errorHandler, asyncHandler } = require('express-async-validator');
 
 const app = express();
 
