@@ -1,0 +1,15 @@
+{
+    "name": "express-async-validator",
+    "version": "1.0.0",
+    "description": "An npm package providing custom error handling and asynchronous middleware wrapping for Express applications and also provide data validating middleware.",
+    "main": "index.js",
+    "type": "module",
+    "author": "Dev Patel",
+    "license": "MIT",
+    "keywords": [
+        "express",
+        "error handling",
+        "middleware",
+        "validation"
+    ]
+}

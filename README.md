@@ -1,19 +1,19 @@
-# Express Async Protector
+# Express Async Validator
 
-An npm package providing custom error handling and asynchronous middleware wrapping for Express applications.
+This npm package acts as a data security guard for your Express applications. It offers asynchronous validation for incoming data (emails, usernames, etc.) and provides custom error handling. Additionally, it includes middleware wrapping functions to streamline asynchronous operations and enhance your development experience.
 
 ## Installation
 
 Install my-project with npm
 
 ```bash
-npm install express-async-protector
+npm install express-async-validator
 ```
 
 or
 
 ```bash
-yarn add express-async-protector
+yarn add express-async-validator
 ```
 
 ## Usage/Examples
@@ -46,6 +46,24 @@ It takes two arguments one is function and second is Array to handle specific er
 app.get("/get", asyncHandler(getFunction));
 ```
 
+**_validator Middleware_**\
+The `validator` function creates a middleware for validating parameters in request body.
+
+```javascript
+app.get("/get", validator("name"(Field name),true(check for empty or exist),true(is email),5(minlength),10(max length),true(is phone no)),asyncHandler(getFunction));
+```
+
+Other validating middlewares : `validateString`,`validateNumber`,`validateBoolean`
+
+```javascript
+app.get(
+    "/get",
+    validateString("name"),
+    validator("name", true, false, 5, 20, false),
+    asyncHandler(getFunction)
+);
+```
+
 ### Example
 
 ```javascript
@@ -54,17 +72,25 @@ const {
     ErrorHandler,
     errorHandler,
     asyncHandler,
-} = require("express-async-protector");
+    validator,
+} = require("express-error-handlers");
 
 const app = express();
 
 //All routes
 app.get(
     "/data",
+    validator(
+        "email",
+        true,
+        true,
+        0 /*Don't want to check*/,
+        0 /*Don't want to check*/,
+        false /*Don't want to check*/
+    ),
     asyncHandler(async (req, res) => {
-        if (!data) {
-            throw new ErrorHandler(404, "Data not found");
-        }
+        //Throw error
+        throw new ErrorHandler(404, "User not found");
     })
 );
 
@@ -81,7 +107,7 @@ To handle specific error types, you can customize one array. This array should c
 
 ```javascript
 const express = require('express');
-const { ErrorHandler, errorHandler, asyncHandler } = require('express-async-protector');
+const { ErrorHandler, errorHandler, asyncHandler } = require('express-error-handlers');
 
 const app = express();
 
@@ -118,7 +144,7 @@ app.listen(3000, () => {
 
 ## License
 
-[MIT](https://github.com/Devapatel0603/express-async-protector/blob/main/LICENCE)
+[MIT](https://github.com/Devapatel0603/express-error-handlers/blob/main/LICENCE)
 
 ## Authors
 
