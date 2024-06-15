@@ -50,7 +50,18 @@ app.get("/get", asyncHandler(getFunction));
 The `validator` function creates a middleware for validating parameters in request body.
 
 ```javascript
-app.get("/get", validator("name"(Field name),true(check for empty or exist),true(is email),5(minlength),10(max length),true(is phone no)),asyncHandler(getFunction));
+app.get(
+    "/get",
+    validator(
+        "name" /*(Field name)*/,
+        true /*(check for empty or exist)*/,
+        true /*(is email)*/,
+        5 /*(minlength)*/,
+        10 /*(max length)*/,
+        true /*(is phone no)*/
+    ),
+    asyncHandler(getFunction)
+);
 ```
 
 Other validating middlewares : `validateString`,`validateNumber`,`validateBoolean`
