@@ -40,7 +40,7 @@ app.use(errorHandler);
 
 **_asyncHandler Middleware_**\
 The `asyncHandler` middleware wraps asynchronous functions to catch errors and pass them to the next middleware. This helps in keeping your route handlers clean and free from try-catch blocks.
-It takes two arguments one is function and second is Array to handle specific errors. Array is optional argument
+It takes two arguments one is function and second is Array to handle specific errors. Array is optional argument.
 
 ```javascript
 app.get("/get", asyncHandler(getFunction));
@@ -68,17 +68,17 @@ app.post(
     "/register",
     validator(
         "username",
-        true, // (true means check for emptiness or existence)
-        false, // (false means don't check for whether it's an email or not)
-        5, // Minimum length
-        20, // Maximum length
-        false // (false means don't check for whether it's an phone no. or not)
+        true, // (true means check for emptiness or existence)(Optional)(Default : true)
+        false, // (false means don't check for whether it's an email or not)(Optional)(Default : false)
+        5, // Minimum length(Optional)(Default : 0)(Don't validate)
+        20, // Maximum length(Optional)(Default : 0)(Don't validate)
+        false // (false means don't check for whether it's phone no. or not)(Optional)(Default : false)
     ),
-    asyncHandler(registerUser) // registerUser is your asynchronous function for handling registration
+    asyncHandler(registerUser)
 );
 ```
 
-Additional Validation Middlewares: For your convenience, `express-async-validato`r offers pre-built validation middlewares like `validateString`, `validateNumber`, and `validateBoolean`.
+Additional Validation Middlewares: For your convenience, `express-async-validator` offers pre-built validation middlewares like `validateString`, `validateNumber`, and `validateBoolean`.
 
 ```javascript
 app.get(
@@ -134,7 +134,7 @@ app.listen(3000, () => {
 
 #### Handling Custom Errors
 
-To handle specific error types, you can customize one array. This array should contain objects with type, `statusCode`, and `message` properties. Add this logic inside your project where `asyncHandler` is used.
+To handle specific error types, you can customize one array. This array should contain objects with `type`, `statusCode`, and `message` properties. Add this logic inside your project where `asyncHandler` is used.
 
 ```javascript
 const express = require('express');
@@ -143,9 +143,10 @@ const { ErrorHandler, errorHandler, asyncHandler } = require('express-async-vali
 const app = express();
 
 errorOptions = const errorTypes = [
-    { type: TypeError,
-      statusCode: 400,
-      message: "Type error occurred"
+    {
+        type: TypeError,
+        statusCode: 400,
+        message: "Type error occurred"
     },
     {
         type: ReferenceError,
