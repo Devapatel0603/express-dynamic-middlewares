@@ -4,7 +4,7 @@ This npm package acts as a data security guard for your Express applications. It
 
 ## Installation
 
-Install my-project with npm
+Install the package using npm or yarn:
 
 ```bash
 npm install express-async-validator
