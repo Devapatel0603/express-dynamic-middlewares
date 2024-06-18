@@ -1,6 +1,6 @@
 # Express Dynamic Middlewares
 
-This npm package acts as a data security guard for your Express applications. It offers asynchronous validation for incoming data (emails, usernames, etc.) and provides custom error handling. Additionally, it includes middleware wrapping functions to streamline asynchronous operations and enhance your development experience.
+This npm package acts as a data security guard for your Express applications. It offers validation for incoming data (emails, usernames, etc.) and provides custom error handling. Additionally, it includes middleware wrapping functions to streamline asynchronous operations and enhance your development experience.
 
 ## Installation
 
