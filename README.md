@@ -1,4 +1,4 @@
-# Express Async Validator
+# Express Dynamic Middlewares
 
 This npm package acts as a data security guard for your Express applications. It offers asynchronous validation for incoming data (emails, usernames, etc.) and provides custom error handling. Additionally, it includes middleware wrapping functions to streamline asynchronous operations and enhance your development experience.
 
@@ -7,13 +7,13 @@ This npm package acts as a data security guard for your Express applications. It
 Install the package using npm or yarn:
 
 ```bash
-npm install express-async-validator
+npm install express-dynamic-middlewares
 ```
 
 or
 
 ```bash
-yarn add express-async-validator
+yarn add express-dynamic-middlewares
 ```
 
 ## Usage/Examples
@@ -67,18 +67,18 @@ The `validator` function creates a middleware for validating parameters in reque
 app.post(
     "/register",
     validator(
-        "username",
+        "username", //Make sure that request body contain username
         true, // (true means check for emptiness or existence)(Optional)(Default : true)
         false, // (false means don't check for whether it's an email or not)(Optional)(Default : false)
-        5, // Minimum length(Optional)(Default : 0)(Don't validate)
-        20, // Maximum length(Optional)(Default : 0)(Don't validate)
+        5, // Minimum length(Optional)(Default : 0)(When 0 don't check for minLenght)
+        20, // Maximum length(Optional)(Default : 0)(When 0 don't check for maxLength)
         false // (false means don't check for whether it's phone no. or not)(Optional)(Default : false)
     ),
     asyncHandler(registerUser)
 );
 ```
 
-Additional Validation Middlewares: For your convenience, `express-async-validator` offers pre-built validation middlewares like `validateString`, `validateNumber`, and `validateBoolean`.
+Additional Validation Middlewares: For your convenience, `express-dynamic-middlewares` offers pre-built validation middlewares like `validateString`, `validateNumber`, and `validateBoolean`.
 
 ```javascript
 app.get(
@@ -98,21 +98,14 @@ const {
     errorHandler,
     asyncHandler,
     validator,
-} = require("express-async-validator");
+} = require("express-dynamic-middlewares");
 
 const app = express();
 
 //All routes
 app.post(
     "/register",
-    validator(
-        "email",
-        true,
-        true,
-        0 /*Don't want to check*/,
-        0 /*Don't want to check*/,
-        false /*Don't want to check*/
-    ),
+    validator("email", true, true, 0, 0, false),
     asyncHandler(async (req, res) => {
         //Throw error
         if (username === "admin@gmail.com") {
@@ -138,7 +131,7 @@ To handle specific error types, you can customize one array. This array should c
 
 ```javascript
 const express = require('express');
-const { ErrorHandler, errorHandler, asyncHandler } = require('express-async-validator');
+const { ErrorHandler, errorHandler, asyncHandler } = require('express-dynamic-middlewares');
 
 const app = express();
 
@@ -176,7 +169,7 @@ app.listen(3000, () => {
 
 ## License
 
-[MIT](https://github.com/Devapatel0603/express-async-validator/blob/main/LICENCE)
+[MIT](https://github.com/Devapatel0603/express-dynamic-middlewares/blob/main/LICENCE)
 
 ## Authors
 

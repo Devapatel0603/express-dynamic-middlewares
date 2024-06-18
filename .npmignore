@@ -4,3 +4,6 @@ LICENCE
 node_modules
 package-lock.json
 README.md
+index.js
+middlewares
+rollup.config.js

@@ -1,11 +1,14 @@
 {
-    "name": "express-async-validator",
+    "name": "express-dynamic-middlewares",
     "version": "1.0.0",
     "description": "An npm package providing custom error handling and asynchronous middleware wrapping for Express applications and also provide data validating middleware.",
-    "main": "index.js",
-    "type": "module",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
     "author": "Dev Patel",
     "license": "MIT",
+    "scripts": {
+        "build": "npx rollup -c"
+    },
     "keywords": [
         "express",
         "error handling",
@@ -14,6 +17,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/Devapatel0603/express-async-validator.git"
+        "url": "https://github.com/Devapatel0603/express-dynamic-middlewares.git"
+    },
+    "devDependencies": {
+        "rollup": "^4.18.0"
     }
 }
