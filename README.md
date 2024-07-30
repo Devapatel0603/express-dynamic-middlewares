@@ -1,6 +1,6 @@
 # Express Dynamic Middlewares
 
-This npm package acts as a data security guard for your Express applications. It offers asynchronous validation for incoming data (emails, usernames, etc.) and provides custom error handling. Additionally, it includes middleware wrapping functions to streamline asynchronous operations and enhance your development experience.
+This npm package acts as a data security guard for your Express applications. It offers validation for incoming data (emails, usernames, etc.) and provides custom error handling. Additionally, it includes middleware wrapping functions to streamline asynchronous operations and enhance your development experience.
 
 ## Installation
 
@@ -130,40 +130,44 @@ app.listen(3000, () => {
 To handle specific error types, you can customize one array. This array should contain objects with `type`, `statusCode`, and `message` properties. Add this logic inside your project where `asyncHandler` is used.
 
 ```javascript
-const express = require('express');
-const { ErrorHandler, errorHandler, asyncHandler } = require('express-dynamic-middlewares');
+const express = require("express");
+const {
+    ErrorHandler,
+    errorHandler,
+    asyncHandler,
+} = require("express-dynamic-middlewares");
 
 const app = express();
 
-errorOptions = const errorTypes = [
+const errorTypes = [
     {
         type: TypeError,
         statusCode: 400,
-        message: "Type error occurred"
+        message: "Type error occurred",
     },
     {
         type: ReferenceError,
         statusCode: 500,
-        message: "Reference error occurred"
+        message: "Reference error occurred",
     },
     {
         type: CastError,
         statusCode: 400,
-        message: "Cast error occurred"
-    }
+        message: "Cast error occurred",
+    },
 ];
 
-const getFunction = asyncHandler(async(req,res)=>{
+const getFunction = asyncHandler(async (req, res) => {
     //function...
-},errorOptions) //Pass error options to handle perticular errors
+}, errorOptions); //Pass error options to handle perticular errors
 
 //All routes
-app.get('/data', getFunction);
+app.get("/data", getFunction);
 
 app.use(errorHandler);
 
 app.listen(3000, () => {
-    console.log('Server running on port 3000');
+    console.log("Server running on port 3000");
 });
 ```
 
